@@ -1,5 +1,6 @@
 var assert = require('assert');
 var exec = require('child_process').exec;
+var events = require('events');
 var root = require('../index');
 var app = root();
 
@@ -26,8 +27,8 @@ app.get('/c/*', function(req, res) {
 });
 
 var test = function(url) {
-	var req = new process.EventEmitter();
-	var res = new process.EventEmitter();
+	var req = new events.EventEmitter();
+	var res = new events.EventEmitter();
 
 	req.method = 'GET';
 	req.url = url;
